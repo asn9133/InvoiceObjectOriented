@@ -1,0 +1,22 @@
+package com.company;
+
+public class Invoice {
+    private String purchased_products;
+    private double purchased_prices;
+
+    public String getPurchased_products() {
+        return purchased_products;
+    }
+
+    public void setPurchased_products(String purchased_products) {
+        this.purchased_products = purchased_products;
+    }
+
+    public double getPurchased_prices() {
+        return purchased_prices;
+    }
+
+    public void setPurchased_prices(double purchased_prices) {
+        this.purchased_prices = purchased_prices;
+    }
+}
