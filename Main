@@ -1,0 +1,84 @@
+package com.company;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        ArrayList<Inventory> store_inventory = new ArrayList<Inventory>();
+
+        Inventory inv = new Inventory();
+        inv.setInventory_products("Bison Sweater");
+        inv.setInventory_prices(55.99);
+        store_inventory.add(inv);
+
+        inv = new Inventory();
+        inv.setInventory_products("Bison Tee");
+        inv.setInventory_prices(14.99);
+        store_inventory.add(inv);
+
+        inv = new Inventory();
+        inv.setInventory_products("Bison Hoodie");
+        inv.setInventory_prices(23.99);
+        store_inventory.add(inv);
+
+        inv = new Inventory();
+        inv.setInventory_products("Bison Bumpersticker");
+        inv.setInventory_prices(4.99);
+        store_inventory.add(inv);
+
+        ArrayList<Invoice> purchased = new ArrayList<>();
+        String answer ="";
+        Invoice order = new Invoice(); 
+
+        do{
+            System.out.println("What do you want to do?");
+            System.out.println("1) add purchase 2) finish purchase");
+            Scanner input = new Scanner(System.in);
+            answer = input.nextLine();
+
+            if (answer.equals("1"))
+            {
+                for(int i=0; i < store_inventory.size(); i++)
+                {
+                    System.out.println(store_inventory.get(i).getInventory_products() + " @ $" + store_inventory.get(i).getInventory_prices());
+                }
+
+                System.out.print("What do you want to purchase?");
+                String product;
+                product = input.nextLine();
+                int index=1;
+
+                for(int i=0; i < store_inventory.size(); i++)
+                {
+                    if(store_inventory.get(i).getInventory_products().equals(product))
+                    {
+                        index = i;
+                    }
+                }
+
+                if(index != -1)
+                {
+                    String product_purchased = store_inventory.get(index).getInventory_products();
+                    double price_purchased = store_inventory.get(index).getInventory_prices();
+
+                    order = new Invoice();
+                    order.setPurchased_products(product_purchased);
+                    order.setPurchased_prices(price_purchased);
+                    purchased.add(order);
+                }
+            }
+        } while (! answer.equals("2"));
+
+        double sum=0;
+        double temp;
+        for (int k=0; k<purchased.size(); k++)
+        {
+            temp = purchased.get(k).getPurchased_prices();
+            sum = sum + temp;
+        }
+        System.out.println("Your total is: $"+sum);
+    }
+}
