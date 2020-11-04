@@ -1,0 +1,22 @@
+package com.company;
+
+public class Inventory {
+    private String inventory_products;
+    private double inventory_prices;
+
+    public String getInventory_products() {
+        return inventory_products;
+    }
+
+    public void setInventory_products(String inventory_products) {
+        this.inventory_products = inventory_products;
+    }
+
+    public double getInventory_prices() {
+        return inventory_prices;
+    }
+
+    public void setInventory_prices(double inventory_prices) {
+        this.inventory_prices = inventory_prices;
+    }
+}
